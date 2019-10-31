@@ -11,7 +11,7 @@ public typealias DownloaderOperationCompletion = (Result<DownloaderOperation, NS
 
 open class DownloaderOperation: Operation {
     private let remote: URL
-    private let destination: URL
+    public let destination: URL
     private let session: URLSession
     private var completion: DownloaderOperationCompletion?
     
