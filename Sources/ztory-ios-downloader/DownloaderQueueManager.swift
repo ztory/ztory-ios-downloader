@@ -8,12 +8,12 @@
 import Foundation
 
 public class DownloaderQueueManager {
-    static let shared: DownloaderQueueManager = DownloaderQueueManager()
+    public static let shared: DownloaderQueueManager = DownloaderQueueManager()
     
     private var downloadQueue = [Downloader]()
     private var runningDownloader: Downloader? = nil
     
-    func add(downloader: Downloader, first: Bool) {
+    public func add(downloader: Downloader, first: Bool) {
         if downloadQueue.contains(downloader) == false {
             registerNotifications(on: downloader)
         }
@@ -29,7 +29,7 @@ public class DownloaderQueueManager {
         runningDownloader?.start()
     }
     
-    func remove(downloader: Downloader) -> Bool {
+    public func remove(downloader: Downloader) -> Bool {
         unregisterNotifications(on: downloader)
         
         downloader.stop()

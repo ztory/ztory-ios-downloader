@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias DownloaderOperationCompletion = (Result<DownloaderOperation, NSError>) -> Void
+public typealias DownloaderOperationCompletion = (Result<DownloaderOperation, NSError>) -> Void
 
-public class DownloaderOperation: Operation {
+open class DownloaderOperation: Operation {
     private let remote: URL
     private let destination: URL
     private let session: URLSession
@@ -22,7 +22,7 @@ public class DownloaderOperation: Operation {
     private var _executing: Bool = false
     private var _finished: Bool = false
     
-    init(remote: URL, destination: URL, session: URLSession, completion: DownloaderOperationCompletion?) {
+    public init(remote: URL, destination: URL, session: URLSession, completion: DownloaderOperationCompletion?) {
         self.remote = remote
         self.destination = destination
         self.session = session
