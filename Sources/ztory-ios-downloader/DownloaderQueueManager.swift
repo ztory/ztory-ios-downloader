@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DownloaderQueueManager {
+public class DownloaderQueueManager: NSObject {
     public static let shared: DownloaderQueueManager = DownloaderQueueManager()
     
     private var downloadQueue = [Downloader]()
