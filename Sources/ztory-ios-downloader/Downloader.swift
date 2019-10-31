@@ -15,12 +15,12 @@ public protocol DownloaderDelegate: class {
     func downloaderDidCompleteDownloading(downloader: Downloader)
 }
 
-enum DownloaderSpeed: Int {
+public enum DownloaderSpeed: Int {
     case max = 8
     case min = 4
 }
 
-extension Notification.Name {
+public extension Notification.Name {
     static let DownloaderDidComplete = Notification.Name("com.zmdownloader.ZMDownloaderDidCompleteNotification")
     static let DownloaderDidStart = Notification.Name("com.zmdownloader.ZMDownloaderDidStartNotification")
     static let DownloaderDidStop = Notification.Name("com.zmdownloader.ZMDownloaderDidStopNotification")
@@ -28,16 +28,16 @@ extension Notification.Name {
     static let DownloaderDidPause = Notification.Name("com.zmdownloader.ZMDownloaderDidPauseNotification")
 }
 
-public class Downloader: NSObject {
+open class Downloader: NSObject {
     private let operationQueueContext = UnsafeMutableRawPointer(bitPattern: 0)
     
     var isRunning: Bool = false
     
     private var delegate: DownloaderDelegate?
     private let session: URLSession
-    private let operationQueue: OperationQueue = OperationQueue()
+    public let operationQueue: OperationQueue = OperationQueue()
     
-    init(delegate: DownloaderDelegate?, operations: [Operation], session: URLSession, defaultDownloadSpeed: DownloaderSpeed = .min) {
+    public init(delegate: DownloaderDelegate?, operations: [Operation], session: URLSession, defaultDownloadSpeed: DownloaderSpeed = .min) {
         self.delegate = delegate
         self.session = session
         
